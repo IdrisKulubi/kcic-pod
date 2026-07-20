@@ -136,7 +136,7 @@ export function HeroSection() {
     <section
       ref={rootRef}
       id="top"
-      className="relative min-h-svh overflow-hidden bg-background px-5 pb-8 pt-28 sm:px-8 sm:pb-10 sm:pt-32 lg:px-10"
+      className="relative min-h-svh overflow-hidden bg-background px-[clamp(1rem,2.2vw,2.75rem)] pb-8 pt-24 sm:pb-10"
     >
       <video
         data-hero-video
@@ -152,13 +152,13 @@ export function HeroSection() {
       <div className="hero-video-shade absolute inset-0" aria-hidden="true" />
       <div className="hero-grain absolute inset-0" aria-hidden="true" />
 
-      <div className="relative z-10 mx-auto flex min-h-[calc(100svh-9rem)] w-full max-w-[90rem] flex-col justify-between">
+      <div className="relative z-10 flex min-h-[calc(100svh-9rem)] w-full max-w-none flex-col justify-between">
         <div className="grid flex-1 items-center gap-10 lg:grid-cols-[minmax(0,1.25fr)_minmax(20rem,0.75fr)] lg:gap-4">
           <div className="max-w-5xl self-center">
            
 
             <h1
-              className="hero-display text-[clamp(2.9rem,7vw,6rem)] leading-[0.82] tracking-[0.01em] text-foreground"
+              className="hero-display text-[clamp(2.3rem,7vw,6rem)] leading-[0.82] tracking-[0.01em] text-foreground"
               aria-label="Sustainably Speaking Africa"
             >
               {titleLines.map((line) => (
@@ -232,7 +232,7 @@ export function HeroSection() {
             </span>
             <span className="h-px w-10 bg-secondary/60" />
             <p className="text-sm font-semibold text-foreground/88">
-              Financing Africa&apos;s climate future
+              Why Africa needs its own sustainability conversation
             </p>
           </div>
 

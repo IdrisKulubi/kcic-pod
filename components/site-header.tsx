@@ -17,9 +17,9 @@ export function SiteHeader() {
   }, [menuOpen])
 
   return (
-    <header className="fixed inset-x-0 top-0 z-50 border-b border-white/10 bg-background/24 backdrop-blur-md">
+    <header className="fixed inset-x-0 top-0 z-50 border-b border-white/10 bg-background/88 backdrop-blur-md">
       <nav
-        className="mx-auto flex h-16 w-full max-w-7xl items-center justify-between gap-4 px-5 sm:h-20 sm:px-8 lg:px-10"
+        className="flex h-14 w-full max-w-none items-center justify-between gap-4 px-[clamp(1rem,2.2vw,2.75rem)] sm:h-16"
         aria-label="Primary"
       >
         <a
@@ -27,7 +27,7 @@ export function SiteHeader() {
           className="group flex min-w-0 items-center gap-3 focus-visible:outline-none focus-visible:ring-3 focus-visible:ring-ring/50"
           aria-label="Sustainably Speaking Africa home"
         >
-          <span className="relative grid size-10 shrink-0 place-items-center rounded-full border border-primary/55 bg-background/30 text-primary sm:size-11">
+          <span className="relative grid size-9 shrink-0 place-items-center rounded-full border border-primary/55 bg-background/30 text-primary sm:size-10">
             <span className="absolute inset-1 rounded-full border border-secondary/30 transition-transform duration-500 group-hover:rotate-45" />
             <Waveform className="size-5" weight="bold" aria-hidden="true" />
           </span>
@@ -56,7 +56,7 @@ export function SiteHeader() {
 
           <button
             type="button"
-            className="inline-flex size-11 items-center justify-center rounded-full border border-border text-foreground md:hidden"
+            className="inline-flex size-10 items-center justify-center rounded-full border border-border text-foreground md:hidden"
             aria-expanded={menuOpen}
             aria-controls="mobile-nav"
             onClick={() => setMenuOpen((open) => !open)}
