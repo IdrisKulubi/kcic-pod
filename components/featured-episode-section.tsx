@@ -83,7 +83,7 @@ export function FeaturedEpisodeSection() {
       className="overflow-hidden bg-[oklch(0.92_0.018_150)] px-[clamp(1rem,2.2vw,2.75rem)] py-[clamp(4.5rem,8vw,8.5rem)] text-[oklch(0.17_0.038_164)]"
     >
       <div className="mx-auto max-w-[96rem]">
-        <header className="grid gap-8 border-b border-[oklch(0.17_0.038_164_/_0.22)] pb-[clamp(2rem,4vw,4rem)] lg:grid-cols-[minmax(0,1fr)_minmax(18rem,0.38fr)] lg:items-end">
+        <header className="relative grid gap-8 pb-[clamp(2rem,4vw,4rem)] after:absolute after:inset-x-0 after:bottom-0 after:h-px after:bg-linear-to-r after:from-primary after:via-primary after:to-secondary lg:grid-cols-[minmax(0,1fr)_minmax(18rem,0.38fr)] lg:items-end">
           <div data-episode-reveal>
             <p className="mb-4 text-base font-bold text-[oklch(0.34_0.085_155)]">
               The launch conversation
@@ -162,7 +162,7 @@ export function FeaturedEpisodeSection() {
                   style={{ height: `${Math.max(18, height * 0.34)}%` }}
                 />
               ))}
-              <span className="ml-3 h-px flex-1 bg-[oklch(0.17_0.038_164_/_0.24)]" />
+              <span className="ml-3 h-px flex-1 bg-linear-to-r from-primary to-secondary" />
               <span className="text-xs font-bold text-[oklch(0.31_0.035_164)]">
                 Launch episode
               </span>
@@ -195,12 +195,32 @@ export function FeaturedEpisodeSection() {
               data-episode-reveal
               className="mt-8 border-y border-[oklch(0.17_0.038_164_/_0.2)] py-6"
             >
-              <p className="text-sm font-bold text-[oklch(0.35_0.08_155)]">
-                Moderated by {featuredEpisode.moderator}
-              </p>
-              <p className="mt-2 text-sm leading-6 text-[oklch(0.28_0.035_164)]">
-                With {featuredEpisode.panelists.join(", ")}
-              </p>
+              <div className="grid gap-5 sm:grid-cols-[0.72fr_1.28fr]">
+                <div>
+                  <p className="text-xs font-bold text-[oklch(0.39_0.085_155)]">
+                    Moderator
+                  </p>
+                  <p className="mt-1 text-base font-extrabold text-[oklch(0.17_0.038_164)]">
+                    {featuredEpisode.moderator}
+                  </p>
+                </div>
+
+                <div>
+                  <p className="text-xs font-bold text-[oklch(0.39_0.085_155)]">
+                    In conversation
+                  </p>
+                  <ul className="mt-2 flex flex-wrap gap-x-4 gap-y-2">
+                    {featuredEpisode.panelists.map((panelist) => (
+                      <li
+                        key={panelist}
+                        className="text-sm font-bold text-[oklch(0.22_0.04_164)]"
+                      >
+                        {panelist}
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              </div>
             </div>
 
             <a
