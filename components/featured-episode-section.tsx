@@ -80,15 +80,15 @@ export function FeaturedEpisodeSection() {
     <section
       ref={sectionRef}
       id="episodes"
-      className="overflow-hidden bg-[oklch(0.92_0.018_150)] px-[clamp(1rem,2.2vw,2.75rem)] py-[clamp(4.5rem,8vw,8.5rem)] text-[oklch(0.17_0.038_164)]"
+      className="overflow-hidden bg-[oklch(0.92_0.018_150)] px-[clamp(1rem,2.2vw,2.75rem)] py-[clamp(3rem,5vw,5rem)] text-[oklch(0.17_0.038_164)]"
     >
       <div className="mx-auto max-w-[96rem]">
-        <header className="relative grid gap-8 pb-[clamp(2rem,4vw,4rem)] after:absolute after:inset-x-0 after:bottom-0 after:h-px after:bg-linear-to-r after:from-primary after:via-primary after:to-secondary lg:grid-cols-[minmax(0,1fr)_minmax(18rem,0.38fr)] lg:items-end">
+        <header className="relative grid gap-4 pb-[clamp(1.25rem,2.5vw,2rem)] after:absolute after:inset-x-0 after:bottom-0 after:h-px after:bg-linear-to-r after:from-primary after:via-primary after:to-secondary lg:grid-cols-[minmax(0,1fr)_minmax(18rem,0.38fr)] lg:items-end">
           <div data-episode-reveal>
-            <p className="mb-4 text-base font-bold text-[oklch(0.34_0.085_155)]">
+            <p className="mb-2 text-sm font-bold text-[oklch(0.34_0.085_155)]">
               The launch conversation
             </p>
-            <h2 className="max-w-5xl text-balance text-[clamp(3rem,6.4vw,6rem)] font-black leading-[0.9] tracking-[0.01em]">
+            <h2 className="max-w-4xl text-balance text-[clamp(2.25rem,4.2vw,3.65rem)] font-black leading-[0.94] tracking-[0.01em]">
               Why Africa.
               <span className="block font-display font-normal italic text-[oklch(0.46_0.17_145)]">
                 Why now?
@@ -98,14 +98,14 @@ export function FeaturedEpisodeSection() {
 
           <p
             data-episode-reveal
-            className="max-w-md text-pretty text-lg font-semibold leading-8 text-[oklch(0.25_0.04_164)]"
+            className="max-w-md text-pretty text-sm font-semibold leading-6 text-[oklch(0.25_0.04_164)] sm:text-base sm:leading-7"
           >
             A live opening statement for a podcast built around grounded,
             African-led sustainability dialogue.
           </p>
         </header>
 
-        <div className="grid gap-[clamp(2.5rem,6vw,7rem)] py-[clamp(3rem,6vw,6.5rem)] lg:grid-cols-[minmax(0,1.32fr)_minmax(21rem,0.68fr)] lg:items-start">
+        <div className="grid gap-[clamp(1.75rem,4vw,3.5rem)] py-[clamp(1.75rem,3.5vw,3.25rem)] lg:grid-cols-[minmax(0,1.32fr)_minmax(21rem,0.68fr)] lg:items-start">
           <div data-episode-video className="relative">
             <div className="relative aspect-video overflow-hidden rounded-md bg-[oklch(0.12_0.03_164)]">
               {isPlaying ? (
@@ -177,14 +177,14 @@ export function FeaturedEpisodeSection() {
 
             <h3
               data-episode-reveal
-              className="mt-5 text-balance text-[clamp(2rem,3.3vw,3.75rem)] font-black leading-[1.02] tracking-[0.01em]"
+              className="mt-3 text-balance text-[clamp(1.5rem,2.4vw,2.45rem)] font-black leading-[1.08] tracking-[0.01em]"
             >
               {featuredEpisode.title}
             </h3>
 
             <div
               data-episode-reveal
-              className="mt-7 space-y-5 text-pretty text-base leading-7 text-[oklch(0.28_0.035_164)] sm:text-lg sm:leading-8"
+              className="mt-4 space-y-3 text-pretty text-sm leading-6 text-[oklch(0.28_0.035_164)] sm:text-base sm:leading-7"
             >
               {featuredEpisode.description.map((paragraph) => (
                 <p key={paragraph}>{paragraph}</p>
@@ -193,7 +193,7 @@ export function FeaturedEpisodeSection() {
 
             <div
               data-episode-reveal
-              className="mt-8 border-y border-[oklch(0.17_0.038_164_/_0.2)] py-6"
+              className="mt-5 border-y border-[oklch(0.17_0.038_164_/_0.2)] py-4"
             >
               <div className="grid gap-5 sm:grid-cols-[0.72fr_1.28fr]">
                 <div>
@@ -228,7 +228,7 @@ export function FeaturedEpisodeSection() {
               href={featuredEpisode.youtubeUrl}
               target="_blank"
               rel="noreferrer"
-              className="group mt-8 inline-flex h-13 items-center gap-3 rounded-full bg-[oklch(0.16_0.04_164)] px-6 text-sm font-extrabold text-[oklch(0.95_0.014_92)] transition-transform duration-300 hover:-translate-y-1 focus-visible:outline-none focus-visible:ring-3 focus-visible:ring-[oklch(0.46_0.17_145_/_0.5)]"
+              className="group mt-5 inline-flex h-11 items-center gap-3 rounded-full bg-[oklch(0.16_0.04_164)] px-5 text-sm font-extrabold text-[oklch(0.95_0.014_92)] transition-transform duration-300 hover:-translate-y-1 focus-visible:outline-none focus-visible:ring-3 focus-visible:ring-[oklch(0.46_0.17_145_/_0.5)]"
             >
               <YoutubeLogo className="size-5" weight="fill" aria-hidden="true" />
               Watch on YouTube
@@ -242,14 +242,14 @@ export function FeaturedEpisodeSection() {
 
         <blockquote
           data-episode-reveal
-          className="relative overflow-hidden rounded-md bg-[oklch(0.14_0.036_164)] px-[clamp(1.5rem,4vw,4.5rem)] py-[clamp(2.5rem,5vw,5rem)] text-[oklch(0.95_0.014_92)]"
+          className="relative overflow-hidden rounded-md bg-[oklch(0.14_0.036_164)] px-[clamp(1.25rem,3vw,3rem)] py-[clamp(1.75rem,3.5vw,3rem)] text-[oklch(0.95_0.014_92)]"
         >
           <Quotes
-            className="absolute right-5 top-5 size-16 text-[oklch(0.77_0.2_145_/_0.3)] sm:right-8 sm:top-8 sm:size-24"
+            className="absolute right-4 top-4 size-12 text-[oklch(0.77_0.2_145_/_0.3)] sm:right-6 sm:top-6 sm:size-16"
             weight="fill"
             aria-hidden="true"
           />
-          <p className="relative max-w-6xl text-balance font-display text-[clamp(2rem,4.2vw,4.75rem)] font-normal italic leading-[1.03] text-[oklch(0.92_0.11_145)]">
+          <p className="relative max-w-5xl text-balance font-display text-[clamp(1.5rem,3vw,2.85rem)] font-normal italic leading-[1.08] text-[oklch(0.92_0.11_145)]">
             Sustainability works best when local context, lived experience,
             and real conversations come first.
           </p>

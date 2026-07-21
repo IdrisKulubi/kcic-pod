@@ -148,6 +148,25 @@
 }
 
 @layer components {
+  .episode-index-scroll {
+    scrollbar-color: var(--primary) color-mix(in oklch, var(--foreground), transparent 93%);
+    scrollbar-gutter: stable;
+    scrollbar-width: thin;
+  }
+
+  .episode-index-scroll::-webkit-scrollbar {
+    width: 0.35rem;
+  }
+
+  .episode-index-scroll::-webkit-scrollbar-track {
+    background: color-mix(in oklch, var(--foreground), transparent 93%);
+  }
+
+  .episode-index-scroll::-webkit-scrollbar-thumb {
+    background: var(--primary);
+    border-radius: 999px;
+  }
+
   .hero-video-shade {
     background:
       linear-gradient(90deg, oklch(0.045 0.018 164 / 0.97) 0%, oklch(0.065 0.024 164 / 0.86) 38%, oklch(0.08 0.024 164 / 0.54) 70%, oklch(0.045 0.018 164 / 0.78) 100%),
