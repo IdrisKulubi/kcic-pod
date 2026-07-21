@@ -2,6 +2,7 @@
 
 import { useEffect, useRef, useState } from "react"
 import Image from "next/image"
+import Link from "next/link"
 import {
   ArrowUpRight,
   MicrophoneStage,
@@ -223,20 +224,31 @@ export function FeaturedEpisodeSection() {
               </div>
             </div>
 
-            <a
-              data-episode-reveal
-              href={featuredEpisode.youtubeUrl}
-              target="_blank"
-              rel="noreferrer"
-              className="group mt-5 inline-flex h-11 items-center gap-3 rounded-full bg-[oklch(0.16_0.04_164)] px-5 text-sm font-extrabold text-[oklch(0.95_0.014_92)] transition-transform duration-300 hover:-translate-y-1 focus-visible:outline-none focus-visible:ring-3 focus-visible:ring-[oklch(0.46_0.17_145_/_0.5)]"
-            >
-              <YoutubeLogo className="size-5" weight="fill" aria-hidden="true" />
-              Watch on YouTube
-              <ArrowUpRight
-                className="size-4 transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5"
-                aria-hidden="true"
-              />
-            </a>
+            <div data-episode-reveal className="mt-5 flex flex-wrap gap-3">
+              <Link
+                href={featuredEpisode.pagePath}
+                className="group inline-flex h-11 items-center gap-3 rounded-full border border-[oklch(0.16_0.04_164_/_0.18)] bg-transparent px-5 text-sm font-extrabold text-[oklch(0.16_0.04_164)] transition-transform duration-300 hover:-translate-y-1 focus-visible:outline-none focus-visible:ring-3 focus-visible:ring-[oklch(0.46_0.17_145_/_0.5)]"
+              >
+                Episode page
+                <ArrowUpRight
+                  className="size-4 transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5"
+                  aria-hidden="true"
+                />
+              </Link>
+              <a
+                href={featuredEpisode.youtubeUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="group inline-flex h-11 items-center gap-3 rounded-full bg-[oklch(0.16_0.04_164)] px-5 text-sm font-extrabold text-[oklch(0.95_0.014_92)] transition-transform duration-300 hover:-translate-y-1 focus-visible:outline-none focus-visible:ring-3 focus-visible:ring-[oklch(0.46_0.17_145_/_0.5)]"
+              >
+                <YoutubeLogo className="size-5" weight="fill" aria-hidden="true" />
+                Watch on YouTube
+                <ArrowUpRight
+                  className="size-4 transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5"
+                  aria-hidden="true"
+                />
+              </a>
+            </div>
           </article>
         </div>
 

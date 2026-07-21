@@ -23,7 +23,7 @@ export function SiteHeader() {
         aria-label="Primary"
       >
         <a
-          href="#top"
+          href="/"
           className="group flex min-w-0 items-center gap-3 focus-visible:outline-none focus-visible:ring-3 focus-visible:ring-ring/50"
           aria-label="Sustainably Speaking Africa home"
         >

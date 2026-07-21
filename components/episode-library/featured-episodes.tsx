@@ -1,9 +1,10 @@
 import Image from "next/image"
-import { ArrowUpRight, Play } from "@phosphor-icons/react/dist/ssr"
+import Link from "next/link"
+import { Play } from "@phosphor-icons/react/dist/ssr"
 
 import {
+  getEpisodePagePath,
   getEpisodeThumbnail,
-  getEpisodeUrl,
   type PodcastEpisode,
 } from "@/lib/episodes"
 
@@ -21,10 +22,8 @@ export function FeaturedEpisodes({ episodes }: FeaturedEpisodesProps) {
         <span className="text-sm font-bold text-secondary">Editor&apos;s listening desk</span>
       </div>
 
-      <a
-        href={getEpisodeUrl(leadEpisode.id)}
-        target="_blank"
-        rel="noreferrer"
+      <Link
+        href={getEpisodePagePath(leadEpisode.id)}
         className="group block focus-visible:outline-none focus-visible:ring-3 focus-visible:ring-ring/60"
       >
         <div className="relative aspect-video overflow-hidden rounded-md bg-card">
@@ -33,7 +32,7 @@ export function FeaturedEpisodes({ episodes }: FeaturedEpisodesProps) {
             sizes="(min-width: 1024px) 46vw, 100vw"
             className="object-cover transition-transform duration-700 ease-out group-hover:scale-[1.035]"
             src={getEpisodeThumbnail(leadEpisode.id)}
-            alt=""
+            alt={`Watch ${leadEpisode.title}`}
           />
           <div
             className="absolute inset-0 bg-[linear-gradient(180deg,transparent_35%,oklch(0.06_0.025_164_/_0.86))]"
@@ -65,16 +64,13 @@ export function FeaturedEpisodes({ episodes }: FeaturedEpisodesProps) {
             ) : null}
           </div>
         </div>
-   
-      </a>
+      </Link>
 
       <div className="mt-10 grid gap-6 sm:grid-cols-2">
         {secondaryEpisodes.map((episode) => (
-          <a
+          <Link
             key={episode.id}
-            href={getEpisodeUrl(episode.id)}
-            target="_blank"
-            rel="noreferrer"
+            href={getEpisodePagePath(episode.id)}
             className="group block focus-visible:outline-none focus-visible:ring-3 focus-visible:ring-ring/60"
           >
             <div className="relative aspect-video overflow-hidden rounded-md bg-card">
@@ -83,7 +79,7 @@ export function FeaturedEpisodes({ episodes }: FeaturedEpisodesProps) {
                 sizes="(min-width: 1024px) 23vw, (min-width: 640px) 50vw, 100vw"
                 className="object-cover transition-transform duration-700 ease-out group-hover:scale-[1.045]"
                 src={getEpisodeThumbnail(episode.id)}
-                alt=""
+                alt={`Watch ${episode.title}`}
               />
               <span className="absolute bottom-3 right-3 grid size-10 place-items-center rounded-full bg-white/92 text-primary shadow-sm">
                 <Play className="size-4" weight="fill" aria-hidden="true" />
@@ -95,7 +91,7 @@ export function FeaturedEpisodes({ episodes }: FeaturedEpisodesProps) {
             <h4 className="mt-2 text-balance text-lg font-extrabold leading-6 transition-colors group-hover:text-primary">
               {episode.title}
             </h4>
-          </a>
+          </Link>
         ))}
       </div>
     </div>

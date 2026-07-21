@@ -1,9 +1,10 @@
 import Image from "next/image"
+import Link from "next/link"
 import { ArrowDown, ArrowUpRight, Play } from "@phosphor-icons/react/dist/ssr"
 
 import {
+  getEpisodePagePath,
   getEpisodeThumbnail,
-  getEpisodeUrl,
   type PodcastEpisode,
 } from "@/lib/episodes"
 
@@ -39,10 +40,8 @@ export function EpisodeIndex({ episodes }: EpisodeIndexProps) {
       >
         {episodes.map((episode, index) => (
           <li key={episode.id} className="border-b border-border">
-            <a
-              href={getEpisodeUrl(episode.id)}
-              target="_blank"
-              rel="noreferrer"
+            <Link
+              href={getEpisodePagePath(episode.id)}
               className="group grid grid-cols-[5.8rem_minmax(0,1fr)_auto] items-center gap-4 py-5 focus-visible:outline-none focus-visible:ring-3 focus-visible:ring-ring/60 sm:grid-cols-[7.5rem_minmax(0,1fr)_auto] sm:gap-5"
             >
               <div className="relative aspect-video overflow-hidden rounded-sm bg-card">
@@ -51,7 +50,7 @@ export function EpisodeIndex({ episodes }: EpisodeIndexProps) {
                   sizes="120px"
                   className="object-cover transition-transform duration-500 ease-out group-hover:scale-105"
                   src={getEpisodeThumbnail(episode.id)}
-                  alt=""
+                  alt={`Watch ${episode.title}`}
                 />
                 <span className="absolute inset-0 grid place-items-center bg-[oklch(0.18_0.038_164_/_0.18)] opacity-0 transition-opacity group-hover:opacity-100">
                   <Play className="size-5 text-primary" weight="fill" aria-hidden="true" />
@@ -79,7 +78,7 @@ export function EpisodeIndex({ episodes }: EpisodeIndexProps) {
                   aria-hidden="true"
                 />
               </div>
-            </a>
+            </Link>
           </li>
         ))}
       </ol>

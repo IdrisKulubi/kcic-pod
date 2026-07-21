@@ -143,8 +143,36 @@ export const featuredPodcastEpisodes = podcastEpisodes.filter(
   (episode) => episode.featured
 )
 
+export const launchEpisode: PodcastEpisode = {
+  id: "d5jJq3LN1tc",
+  title:
+    "Why launch a sustainability podcast in Africa, and why now?",
+  duration: "52:00",
+  published: "July 2026",
+  topic: "Launch",
+  summary:
+    "Recorded live at the Sustainably Speaking Africa launch — a conversation on innovation, collaboration, and African-led sustainability dialogue.",
+  featured: true,
+}
+
+export function getEpisodeById(id: string) {
+  if (id === launchEpisode.id) return launchEpisode
+  return podcastEpisodes.find((episode) => episode.id === id)
+}
+
+export function getAllIndexableEpisodes() {
+  const withoutLaunch = podcastEpisodes.filter(
+    (episode) => episode.id !== launchEpisode.id
+  )
+  return [launchEpisode, ...withoutLaunch]
+}
+
 export function getEpisodeUrl(id: string) {
   return `https://www.youtube.com/watch?v=${id}`
+}
+
+export function getEpisodePagePath(id: string) {
+  return `/episodes/${id}`
 }
 
 export function getEpisodeThumbnail(id: string) {
