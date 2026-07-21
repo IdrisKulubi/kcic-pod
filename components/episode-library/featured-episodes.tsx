@@ -16,7 +16,7 @@ export function FeaturedEpisodes({ episodes }: FeaturedEpisodesProps) {
 
   return (
     <div>
-      <div className="mb-6 flex items-center justify-between border-b border-white/16 pb-4">
+      <div className="mb-6 flex items-center justify-between border-b border-border pb-4">
         <h3 className="text-2xl font-black sm:text-3xl">Top featured</h3>
         <span className="text-sm font-bold text-secondary">Editor&apos;s listening desk</span>
       </div>
@@ -45,7 +45,7 @@ export function FeaturedEpisodes({ episodes }: FeaturedEpisodesProps) {
           <span className="absolute bottom-5 right-5 grid size-14 place-items-center rounded-full bg-primary text-primary-foreground transition-transform duration-300 group-hover:scale-110 sm:size-16">
             <Play className="ml-0.5 size-6" weight="fill" aria-hidden="true" />
           </span>
-          <span className="absolute bottom-5 left-5 text-sm font-bold text-foreground">
+          <span className="absolute bottom-5 left-5 text-sm font-bold text-[oklch(0.97_0.01_92)]">
             {leadEpisode.duration}
           </span>
         </div>
@@ -59,7 +59,7 @@ export function FeaturedEpisodes({ episodes }: FeaturedEpisodesProps) {
               {leadEpisode.title}
             </h4>
             {leadEpisode.summary ? (
-              <p className="mt-4 max-w-2xl text-pretty text-sm leading-6 text-foreground/68">
+              <p className="mt-4 max-w-2xl text-pretty text-sm leading-6 text-muted-foreground">
                 {leadEpisode.summary}
               </p>
             ) : null}
@@ -85,7 +85,7 @@ export function FeaturedEpisodes({ episodes }: FeaturedEpisodesProps) {
                 src={getEpisodeThumbnail(episode.id)}
                 alt=""
               />
-              <span className="absolute bottom-3 right-3 grid size-10 place-items-center rounded-full bg-background/88 text-primary backdrop-blur-sm">
+              <span className="absolute bottom-3 right-3 grid size-10 place-items-center rounded-full bg-white/92 text-primary shadow-sm">
                 <Play className="size-4" weight="fill" aria-hidden="true" />
               </span>
             </div>

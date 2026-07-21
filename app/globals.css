@@ -148,6 +148,23 @@
 }
 
 @layer components {
+  .light-surface {
+    --background: oklch(0.955 0.012 150);
+    --foreground: oklch(0.18 0.038 164);
+    --card: oklch(0.99 0.005 150);
+    --card-foreground: oklch(0.18 0.038 164);
+    --muted: oklch(0.93 0.012 150);
+    --muted-foreground: oklch(0.45 0.03 164);
+    --secondary: oklch(0.48 0.11 205);
+    --secondary-foreground: oklch(0.98 0.01 205);
+    --accent: oklch(0.94 0.016 150);
+    --accent-foreground: oklch(0.18 0.038 164);
+    --border: oklch(0.18 0.038 164 / 14%);
+    --input: oklch(0.18 0.038 164 / 16%);
+    color: var(--foreground);
+    background-color: var(--background);
+  }
+
   .episode-index-scroll {
     scrollbar-color: var(--primary) color-mix(in oklch, var(--foreground), transparent 93%);
     scrollbar-gutter: stable;

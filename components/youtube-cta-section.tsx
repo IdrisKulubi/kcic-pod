@@ -115,7 +115,7 @@ export function YoutubeCtaSection() {
     <section
       ref={sectionRef}
       id="youtube"
-      className="bg-background px-[clamp(1rem,2.2vw,2.75rem)] py-[clamp(2rem,4vw,3.5rem)]"
+      className="light-surface px-[clamp(1rem,2.2vw,2.75rem)] py-[clamp(2rem,4vw,3.5rem)]"
       aria-label="Follow Sustainably Speaking Africa on YouTube"
     >
       <div className="mx-auto max-w-[96rem]">

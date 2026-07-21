@@ -64,12 +64,9 @@ export function SiteFooter() {
   }, [])
 
   return (
-    <footer
-      ref={footerRef}
-      className="border-t border-white/10 bg-[oklch(0.09_0.028_164)] text-foreground"
-    >
+    <footer ref={footerRef} className="light-surface border-t border-border">
       <div className="mx-auto max-w-[96rem] px-[clamp(1rem,2.2vw,2.75rem)] pt-[clamp(3rem,6vw,5rem)] pb-8">
-        <div className="grid gap-10 border-b border-white/10 pb-10 lg:grid-cols-[minmax(0,1.2fr)_minmax(0,1.8fr)] lg:gap-16">
+        <div className="grid gap-10 border-b border-border pb-10 lg:grid-cols-[minmax(0,1.2fr)_minmax(0,1.8fr)] lg:gap-16">
           <div data-footer-reveal className="max-w-md">
             <a
               href="#top"
@@ -90,13 +87,13 @@ export function SiteFooter() {
               </span>
             </a>
 
-            <p className="mt-6 text-pretty text-sm leading-7 text-foreground/68 sm:text-base">
+            <p className="mt-6 text-pretty text-sm leading-7 text-foreground/70 sm:text-base">
               African climate stories in full signal. Conversations with founders,
               financiers, and community builders shaping innovation across the
               continent.
             </p>
 
-            <p className="mt-5 text-xs font-bold uppercase tracking-[0.14em] text-foreground/40">
+            <p className="mt-5 text-xs font-bold uppercase tracking-[0.14em] text-muted-foreground">
               A KCIC production
             </p>
           </div>
@@ -111,7 +108,7 @@ export function SiteFooter() {
                   <li key={item.href}>
                     <a
                       href={item.href}
-                      className="text-sm font-semibold text-foreground/72 transition-colors hover:text-primary focus-visible:outline-none focus-visible:ring-3 focus-visible:ring-ring/50"
+                      className="text-sm font-semibold text-foreground/75 transition-colors hover:text-primary focus-visible:outline-none focus-visible:ring-3 focus-visible:ring-ring/50"
                     >
                       {item.label}
                     </a>
@@ -129,7 +126,7 @@ export function SiteFooter() {
                   <li key={topic.slug}>
                     <a
                       href={`#${topic.slug}`}
-                      className="text-sm font-semibold text-foreground/72 transition-colors hover:text-primary focus-visible:outline-none focus-visible:ring-3 focus-visible:ring-ring/50"
+                      className="text-sm font-semibold text-foreground/75 transition-colors hover:text-primary focus-visible:outline-none focus-visible:ring-3 focus-visible:ring-ring/50"
                     >
                       {topic.label}
                     </a>
@@ -149,7 +146,7 @@ export function SiteFooter() {
                       href={link.href}
                       target="_blank"
                       rel="noreferrer"
-                      className="group inline-flex items-center gap-2 text-sm font-semibold text-foreground/72 transition-colors hover:text-primary focus-visible:outline-none focus-visible:ring-3 focus-visible:ring-ring/50"
+                      className="group inline-flex items-center gap-2 text-sm font-semibold text-foreground/75 transition-colors hover:text-primary focus-visible:outline-none focus-visible:ring-3 focus-visible:ring-ring/50"
                     >
                       <link.icon className="size-4" weight="fill" aria-hidden="true" />
                       {link.label}
@@ -167,19 +164,19 @@ export function SiteFooter() {
 
         <div
           data-footer-reveal
-          className="mt-8 flex flex-col gap-4 border-b border-white/10 pb-8 sm:flex-row sm:items-center sm:justify-between"
+          className="mt-8 flex flex-col gap-4 border-b border-border pb-8 sm:flex-row sm:items-center sm:justify-between"
         >
           <div>
             <p className="font-display text-2xl italic tracking-[-0.02em] text-primary sm:text-3xl">
               The conversation continues.
             </p>
-            <p className="mt-2 max-w-md text-sm text-foreground/58">
+            <p className="mt-2 max-w-md text-sm text-muted-foreground">
               Suggest a guest, share a question, or join the next episode drop.
             </p>
           </div>
           <a
             href="mailto:podcast@kcic.org?subject=Sustainably%20Speaking%20Africa"
-            className="inline-flex h-11 w-fit items-center gap-2 rounded-full border border-white/16 bg-white/5 px-5 text-sm font-extrabold text-foreground transition-colors hover:border-primary/50 hover:text-primary focus-visible:outline-none focus-visible:ring-3 focus-visible:ring-ring/50"
+            className="inline-flex h-11 w-fit items-center gap-2 rounded-full border border-border bg-card px-5 text-sm font-extrabold text-foreground transition-colors hover:border-primary/50 hover:text-primary focus-visible:outline-none focus-visible:ring-3 focus-visible:ring-ring/50"
           >
             <EnvelopeSimple className="size-4" weight="bold" aria-hidden="true" />
             Contact the team
@@ -188,15 +185,13 @@ export function SiteFooter() {
 
         <div
           data-footer-reveal
-          className="mt-6 flex flex-col gap-3 text-xs text-foreground/42 sm:flex-row sm:items-center sm:justify-between"
+          className="mt-6 flex flex-col gap-3 text-xs text-muted-foreground sm:flex-row sm:items-center sm:justify-between"
         >
           <p>
             © {new Date().getFullYear()} Sustainably Speaking Africa · Kenya
             Climate Innovation Center
           </p>
-          <p className="font-medium">
-            Innovation for a greener world
-          </p>
+          <p className="font-medium">Innovation for a greener world</p>
         </div>
       </div>
     </footer>

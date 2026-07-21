@@ -80,7 +80,7 @@ export function FeaturedEpisodeSection() {
     <section
       ref={sectionRef}
       id="episodes"
-      className="overflow-hidden bg-[oklch(0.92_0.018_150)] px-[clamp(1rem,2.2vw,2.75rem)] py-[clamp(3rem,5vw,5rem)] text-[oklch(0.17_0.038_164)]"
+      className="light-surface overflow-hidden px-[clamp(1rem,2.2vw,2.75rem)] py-[clamp(3rem,5vw,5rem)]"
     >
       <div className="mx-auto max-w-[96rem]">
         <header className="relative grid gap-4 pb-[clamp(1.25rem,2.5vw,2rem)] after:absolute after:inset-x-0 after:bottom-0 after:h-px after:bg-linear-to-r after:from-primary after:via-primary after:to-secondary lg:grid-cols-[minmax(0,1fr)_minmax(18rem,0.38fr)] lg:items-end">

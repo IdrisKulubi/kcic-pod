@@ -43,7 +43,7 @@ export function EpisodeLibrarySection() {
     <section
       ref={sectionRef}
       id="episode-library"
-      className="overflow-hidden bg-[oklch(0.105_0.03_164)] px-[clamp(1rem,2.2vw,2.75rem)] py-[clamp(4rem,6vw,6rem)] text-foreground"
+      className="light-surface overflow-hidden px-[clamp(1rem,2.2vw,2.75rem)] py-[clamp(4rem,6vw,6rem)]"
     >
       <div className="mx-auto max-w-[96rem]">
         <div className="grid gap-[clamp(3rem,5vw,6rem)] lg:grid-cols-[minmax(0,0.96fr)_minmax(26rem,0.84fr)] lg:items-stretch">

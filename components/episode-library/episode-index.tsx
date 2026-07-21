@@ -14,15 +14,15 @@ type EpisodeIndexProps = {
 export function EpisodeIndex({ episodes }: EpisodeIndexProps) {
   return (
     <div className="flex min-h-0 flex-1 flex-col">
-      <div className="mb-1 flex shrink-0 items-end justify-between gap-5 border-b border-white/16 pb-4">
+      <div className="mb-1 flex shrink-0 items-end justify-between gap-5 border-b border-border pb-4">
         <div>
           <h3 className="text-2xl font-black sm:text-3xl">All episodes</h3>
-          <p className="mt-2 text-sm text-foreground/58">
+          <p className="mt-2 text-sm text-muted-foreground">
             Newest conversations first
           </p>
         </div>
         <div className="flex shrink-0 items-end gap-4">
-          <span className="hidden items-center gap-1.5 pb-1 text-xs font-bold text-foreground/48 sm:flex">
+          <span className="hidden items-center gap-1.5 pb-1 text-xs font-bold text-muted-foreground sm:flex">
             Scroll for more
             <ArrowDown className="size-3.5 text-secondary" aria-hidden="true" />
           </span>
@@ -38,7 +38,7 @@ export function EpisodeIndex({ episodes }: EpisodeIndexProps) {
         aria-label="All podcast episodes"
       >
         {episodes.map((episode, index) => (
-          <li key={episode.id} className="border-b border-white/12">
+          <li key={episode.id} className="border-b border-border">
             <a
               href={getEpisodeUrl(episode.id)}
               target="_blank"
@@ -53,7 +53,7 @@ export function EpisodeIndex({ episodes }: EpisodeIndexProps) {
                   src={getEpisodeThumbnail(episode.id)}
                   alt=""
                 />
-                <span className="absolute inset-0 grid place-items-center bg-background/12 opacity-0 transition-opacity group-hover:opacity-100">
+                <span className="absolute inset-0 grid place-items-center bg-[oklch(0.18_0.038_164_/_0.18)] opacity-0 transition-opacity group-hover:opacity-100">
                   <Play className="size-5 text-primary" weight="fill" aria-hidden="true" />
                 </span>
               </div>
@@ -65,17 +65,17 @@ export function EpisodeIndex({ episodes }: EpisodeIndexProps) {
                 <h4 className="mt-1 text-pretty text-sm font-extrabold leading-6 transition-colors group-hover:text-primary sm:text-base sm:leading-7">
                   {episode.title}
                 </h4>
-                <p className="mt-1 text-xs leading-snug text-foreground/48">
+                <p className="mt-1 text-xs leading-snug text-muted-foreground">
                   {episode.published}
                 </p>
               </div>
 
               <div className="flex flex-col items-end justify-between self-stretch py-1">
-                <span className="text-xs font-bold text-foreground/35">
+                <span className="text-xs font-bold text-muted-foreground">
                   {String(index + 1).padStart(2, "0")}
                 </span>
                 <ArrowUpRight
-                  className="size-4 text-foreground/45 transition-all duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 group-hover:text-primary"
+                  className="size-4 text-muted-foreground transition-all duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 group-hover:text-primary"
                   aria-hidden="true"
                 />
               </div>
