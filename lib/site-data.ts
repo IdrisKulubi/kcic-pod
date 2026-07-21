@@ -65,4 +65,10 @@ export const guestPreviews = [
   },
 ]
 
+export const youtubeChannel = {
+  handle: "@KenyaCIC",
+  label: "Our YouTube Channel",
+  url: "https://www.youtube.com/@KenyaClimateInnovationCenter",
+} as const
+
 export const waveformBars = [42, 68, 34, 86, 58, 74, 46, 92, 54, 78, 38, 64]
