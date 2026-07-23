@@ -1,3 +1,6 @@
+import { readFile } from "node:fs/promises"
+import { join } from "node:path"
+
 import { ImageResponse } from "next/og"
 
 import { siteConfig } from "@/lib/site"
@@ -6,7 +9,12 @@ export const alt = `${siteConfig.name} — ${siteConfig.tagline}`
 export const size = { width: 1200, height: 630 }
 export const contentType = "image/png"
 
-export default function TwitterImage() {
+export default async function TwitterImage() {
+  const logoBuffer = await readFile(
+    join(process.cwd(), "public", "ssa-logo.png")
+  )
+  const logoSrc = `data:image/png;base64,${logoBuffer.toString("base64")}`
+
   return new ImageResponse(
     (
       <div
@@ -16,48 +24,41 @@ export default function TwitterImage() {
           display: "flex",
           flexDirection: "column",
           justifyContent: "space-between",
-          padding: "64px",
+          padding: "56px 64px",
           background:
-            "linear-gradient(145deg, #0f2920 0%, #163528 48%, #0c1f18 100%)",
+            "linear-gradient(145deg, #050505 0%, #0f1a14 48%, #050505 100%)",
           color: "#f5f2e8",
-          fontFamily: "Georgia, serif",
         }}
       >
-        <div
-          style={{
-            display: "flex",
-            alignItems: "center",
-            gap: "12px",
-            fontSize: 28,
-            fontWeight: 700,
-            letterSpacing: "0.04em",
-            textTransform: "uppercase",
-            color: "#79d42f",
-          }}
-        >
-          KCIC Podcast
-        </div>
+        <img
+          src={logoSrc}
+          alt=""
+          width={520}
+          height={180}
+          style={{ objectFit: "contain", objectPosition: "left center" }}
+        />
 
-        <div style={{ display: "flex", flexDirection: "column", gap: "18px" }}>
+        <div style={{ display: "flex", flexDirection: "column", gap: "14px" }}>
           <div
             style={{
-              fontSize: 72,
-              lineHeight: 0.95,
-              fontWeight: 700,
-              maxWidth: 900,
-            }}
-          >
-            Sustainably Speaking Africa
-          </div>
-          <div
-            style={{
-              fontSize: 32,
+              fontSize: 36,
               fontStyle: "italic",
               color: "#9be04a",
               maxWidth: 720,
+              fontFamily: "Georgia, serif",
             }}
           >
             {siteConfig.tagline}
+          </div>
+          <div
+            style={{
+              fontSize: 24,
+              color: "rgba(245,242,232,0.78)",
+              maxWidth: 820,
+            }}
+          >
+            African voices on climate finance, clean energy, circularity, and
+            leadership.
           </div>
         </div>
 
@@ -66,8 +67,8 @@ export default function TwitterImage() {
             display: "flex",
             justifyContent: "space-between",
             alignItems: "flex-end",
-            fontSize: 24,
-            color: "rgba(245,242,232,0.78)",
+            fontSize: 22,
+            color: "rgba(245,242,232,0.72)",
           }}
         >
           <span>Climate · Energy · Circularity · Leadership</span>

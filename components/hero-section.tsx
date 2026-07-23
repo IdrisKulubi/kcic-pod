@@ -1,15 +1,39 @@
 "use client"
 
 import { useEffect, useRef } from "react"
-import { ArrowDownRight, ArrowUpRight, Play, Waveform } from "@phosphor-icons/react"
+import Image from "next/image"
+import { ArrowUpRight, ApplePodcastsLogo, Play, SpotifyLogo, YoutubeLogo } from "@phosphor-icons/react"
 import gsap from "gsap"
 
-import { topics, waveformBars } from "@/lib/site-data"
+import { siteLogoSrc } from "@/components/site-logo"
+import { waveformBars } from "@/lib/site-data"
+import { siteConfig } from "@/lib/site"
 
 const titleLines = [
   { text: "Sustainably", className: "font-sans font-black" },
   { text: "Speaking", className: "font-display italic font-normal text-primary" },
   { text: "Africa", className: "font-sans font-black" },
+] as const
+
+const listenLinks = [
+  {
+    label: "YouTube",
+    href: siteConfig.social.youtube,
+    icon: YoutubeLogo,
+    iconClass: "text-[oklch(0.62_0.24_25)]",
+  },
+  {
+    label: "Spotify",
+    href: siteConfig.platforms.spotify,
+    icon: SpotifyLogo,
+    iconClass: "text-[oklch(0.72_0.19_155)]",
+  },
+  {
+    label: "Apple Podcasts",
+    href: siteConfig.platforms.applePodcasts,
+    icon: ApplePodcastsLogo,
+    iconClass: "text-[oklch(0.72_0.18_330)]",
+  },
 ] as const
 
 export function HeroSection() {
@@ -211,8 +235,14 @@ export function HeroSection() {
             <span data-frequency-ring className="frequency-orbit frequency-orbit-two" />
             <span data-frequency-ring className="frequency-orbit frequency-orbit-three" />
             <span className="frequency-crosshair" />
-            <span className="relative grid size-24 place-items-center rounded-full bg-primary text-primary-foreground shadow-[0_0_0_12px_oklch(0.77_0.2_145_/_0.12)]">
-              <Waveform className="size-9" weight="bold" />
+            <span className="relative grid size-36 place-items-center overflow-hidden rounded-full border border-white/15 bg-background/90 shadow-[0_0_0_12px_oklch(0.77_0.2_145_/_0.12)] sm:size-40">
+              <Image
+                src={siteLogoSrc}
+                alt=""
+                width={220}
+                height={80}
+                className="h-16 w-auto max-w-[9.5rem] object-contain"
+              />
             </span>
             <span className="absolute bottom-[13%] right-[4%] max-w-44 text-left text-[0.68rem] font-bold uppercase leading-5 tracking-[0.18em] text-foreground/65">
               Voices. Ideas.
@@ -248,24 +278,25 @@ export function HeroSection() {
           </div>
 
           <div className="flex items-center justify-between gap-4 lg:justify-end">
-            <div className="flex flex-wrap gap-x-4 gap-y-2" aria-label="Featured themes">
-              {topics.slice(0, 3).map((topic) => (
+            <div className="flex flex-wrap items-center gap-3" aria-label="Listen on">
+              {listenLinks.map((link) => (
                 <a
-                  key={topic.slug}
-                  href={`#${topic.slug}`}
-                  className="text-[0.65rem] font-bold uppercase tracking-[0.18em] text-foreground/58 transition-colors hover:text-secondary focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring/60"
+                  key={link.label}
+                  href={link.href}
+                  target="_blank"
+                  rel="noreferrer"
+                  className="grid size-10 place-items-center rounded-full border border-white/22 bg-background/35 text-foreground transition-colors hover:border-white/45 hover:bg-background/55 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring/60"
+                  aria-label={link.label}
                 >
-                  {topic.label}
+                  <link.icon
+                    className={`size-5 ${link.iconClass}`}
+                    weight="fill"
+                    aria-hidden="true"
+                  />
                 </a>
               ))}
             </div>
-            <a
-              href="#themes"
-              className="hidden size-10 shrink-0 place-items-center rounded-full border border-white/22 text-foreground transition-colors hover:border-primary hover:text-primary sm:grid"
-              aria-label="Explore themes"
-            >
-              <ArrowDownRight className="size-4" aria-hidden="true" />
-            </a>
+           
           </div>
         </div>
       </div>

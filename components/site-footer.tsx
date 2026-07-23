@@ -2,21 +2,50 @@
 
 import { useEffect, useRef } from "react"
 import {
+  FacebookLogo,
   InstagramLogo,
   LinkedinLogo,
-  Waveform,
   XLogo,
   YoutubeLogo,
 } from "@phosphor-icons/react"
 import gsap from "gsap"
+import Link from "next/link"
 
-import { navItems, topics, youtubeChannel } from "@/lib/site-data"
+import { SiteLogo } from "@/components/site-logo"
+import { navItems, youtubeChannel } from "@/lib/site-data"
+import { siteConfig } from "@/lib/site"
 
 const socialLinks = [
-  { label: "YouTube", href: youtubeChannel.url, icon: YoutubeLogo },
-  { label: "X", href: "https://x.com", icon: XLogo },
-  { label: "Instagram", href: "https://instagram.com", icon: InstagramLogo },
-  { label: "LinkedIn", href: "https://linkedin.com", icon: LinkedinLogo },
+  {
+    label: "YouTube",
+    href: siteConfig.social.youtube,
+    icon: YoutubeLogo,
+    iconClass: "text-[#FF0000]",
+  },
+  {
+    label: "X",
+    href: siteConfig.social.x,
+    icon: XLogo,
+    iconClass: "text-[#0F1419]",
+  },
+  {
+    label: "Instagram",
+    href: siteConfig.social.instagram,
+    icon: InstagramLogo,
+    iconClass: "text-[#E4405F]",
+  },
+  {
+    label: "LinkedIn",
+    href: siteConfig.social.linkedin,
+    icon: LinkedinLogo,
+    iconClass: "text-[#0A66C2]",
+  },
+  {
+    label: "Facebook",
+    href: siteConfig.social.facebook,
+    icon: FacebookLogo,
+    iconClass: "text-[#1877F2]",
+  },
 ] as const
 
 const footerColumns = [
@@ -24,31 +53,25 @@ const footerColumns = [
     title: "Explore",
     links: navItems.map((item) => ({ label: item.label, href: item.href })),
   },
-  {
-    title: "Themes",
-    links: topics.map((topic) => ({
-      label: topic.label,
-      href: `#${topic.slug}`,
-    })),
-  },
+
   {
     title: "Listen",
     links: [
       { label: "YouTube", href: youtubeChannel.url },
-      { label: "Spotify", href: "https://open.spotify.com" },
-      { label: "Apple Podcasts", href: "https://podcasts.apple.com" },
+      { label: "Spotify", href: siteConfig.platforms.spotify },
+      { label: "Apple Podcasts", href: siteConfig.platforms.applePodcasts },
       {
         label: "Contact",
-        href: "mailto:podcast@kcic.org?subject=Sustainably%20Speaking%20Africa",
+        href: `mailto:${siteConfig.email}?subject=Sustainably%20Speaking%20Africa`,
       },
     ],
   },
 ] as const
 
 const legalLinks = [
-  { label: "Privacy Policy", href: "#privacy" },
-  { label: "Terms of Service", href: "#terms" },
-  { label: "Cookies Settings", href: "#cookies" },
+  { label: "Privacy Policy", href: "/privacy" },
+  { label: "Terms of Service", href: "/terms" },
+  { label: "Cookies Settings", href: "/cookies" },
 ] as const
 
 export function SiteFooter() {
@@ -94,18 +117,13 @@ export function SiteFooter() {
       >
         <div className="grid gap-10 lg:grid-cols-[minmax(0,1.15fr)_minmax(0,1.6fr)] lg:gap-16">
           <div>
-            <a
-              href="#top"
-              className="inline-flex items-center gap-3 focus-visible:outline-none focus-visible:ring-3 focus-visible:ring-ring/50"
+            <Link
+              href="/"
+              className="inline-flex focus-visible:outline-none focus-visible:ring-3 focus-visible:ring-ring/50"
               aria-label="Sustainably Speaking Africa home"
             >
-              <span className="grid size-10 place-items-center rounded-xl bg-[oklch(0.18_0.038_164)] text-primary">
-                <Waveform className="size-5" weight="bold" aria-hidden="true" />
-              </span>
-              <span className="text-lg font-extrabold tracking-[-0.02em] text-foreground">
-                Sustainably Speaking
-              </span>
-            </a>
+              <SiteLogo size="md" className="max-w-[min(100%,16rem)] rounded-md" />
+            </Link>
 
             <p className="mt-5 max-w-sm text-pretty text-sm leading-6 text-muted-foreground">
               African climate stories in full signal. Conversations with founders,
@@ -120,10 +138,14 @@ export function SiteFooter() {
                   href={social.href}
                   target="_blank"
                   rel="noreferrer"
-                  className="grid size-9 place-items-center rounded-lg text-foreground transition-colors hover:bg-muted hover:text-primary focus-visible:outline-none focus-visible:ring-3 focus-visible:ring-ring/50"
+                  className="grid size-9 place-items-center rounded-lg transition-colors hover:bg-muted focus-visible:outline-none focus-visible:ring-3 focus-visible:ring-ring/50"
                   aria-label={social.label}
                 >
-                  <social.icon className="size-4" weight="fill" aria-hidden="true" />
+                  <social.icon
+                    className={`size-4 ${social.iconClass}`}
+                    weight="fill"
+                    aria-hidden="true"
+                  />
                 </a>
               ))}
             </div>

@@ -14,7 +14,7 @@ type EpisodeIndexProps = {
 
 export function EpisodeIndex({ episodes }: EpisodeIndexProps) {
   return (
-    <div className="flex min-h-0 flex-1 flex-col">
+    <div id="guests" className="flex min-h-0 flex-1 flex-col scroll-mt-28">
       <div className="mb-1 flex shrink-0 items-end justify-between gap-5 border-b border-border pb-4">
         <div>
           <h3 className="text-2xl font-black sm:text-3xl">All episodes</h3>

@@ -19,14 +19,25 @@ export const siteConfig = {
   language: "en",
   creator: "Kenya Climate Innovation Center",
   publisher: "Kenya Climate Innovation Center",
-  email: "podcast@kcic.org",
+  email: "sustainability.podcast@kenyacic.org",
   youtube: {
-    handle: "@KenyaCIC",
-    url: "https://www.youtube.com/@KenyaClimateInnovationCenter",
+    handle: "@kenyaclimateinnovationcenter",
+    url: "https://www.youtube.com/@kenyaclimateinnovationcenter",
+  },
+  platforms: {
+    spotify:
+      "https://open.spotify.com/show/0BVNFDqa5sGHiqFVLul31q?si=b92b1c7cfcdd4022",
+    applePodcasts:
+      "https://podcasts.apple.com/us/podcast/sustainably-speaking-africa/id1870783270",
   },
   social: {
-    youtube: "https://www.youtube.com/@KenyaClimateInnovationCenter",
+    youtube: "https://www.youtube.com/@kenyaclimateinnovationcenter",
+    linkedin: "https://www.linkedin.com/showcase/sustainably-speaking-africa/",
+    facebook: "https://www.facebook.com/SSAfricaPodcast/",
+    instagram: "https://www.instagram.com/ssafricapod/",
+    x: "https://x.com/SSAfricaPod",
   },
+  logo: "/ssa-logo.png",
 } as const
 
 export function getSiteUrl() {

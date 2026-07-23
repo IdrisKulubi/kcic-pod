@@ -1,8 +1,8 @@
 export const navItems = [
   { label: "Episodes", href: "/#episodes" },
-  { label: "Themes", href: "/#themes" },
+  // { label: "Themes", href: "/#themes" },
   { label: "Guests", href: "/#guests" },
-  { label: "Transcripts", href: "/#transcripts" },
+  // { label: "Transcripts", href: "/#transcripts" },
 ] as const
 
 export const topics = [
@@ -13,9 +13,9 @@ export const topics = [
 ] as const
 
 export const youtubeChannel = {
-  handle: "@KenyaCIC",
+  handle: "@kenyaclimateinnovationcenter",
   label: "Our YouTube Channel",
-  url: "https://www.youtube.com/@KenyaClimateInnovationCenter",
+  url: "https://www.youtube.com/@kenyaclimateinnovationcenter",
 } as const
 
 export const featuredEpisode = {

@@ -32,6 +32,11 @@ export const metadata: Metadata = {
   ...buildPageMetadata(),
   applicationName: siteConfig.name,
   referrer: "origin-when-cross-origin",
+  icons: {
+    icon: [{ url: siteConfig.logo, type: "image/png" }],
+    apple: [{ url: siteConfig.logo, type: "image/png" }],
+    shortcut: siteConfig.logo,
+  },
   formatDetection: {
     email: false,
     address: false,

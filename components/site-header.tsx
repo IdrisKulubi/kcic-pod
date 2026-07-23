@@ -1,8 +1,10 @@
 "use client"
 
-import { useEffect,  useState } from "react"
-import { List,  Waveform, X } from "@phosphor-icons/react"
+import { useEffect, useState } from "react"
+import { List, X } from "@phosphor-icons/react"
+import Link from "next/link"
 
+import { SiteLogo } from "@/components/site-logo"
 import { navItems } from "@/lib/site-data"
 import { cn } from "@/lib/utils"
 
@@ -19,25 +21,16 @@ export function SiteHeader() {
   return (
     <header className="fixed inset-x-0 top-0 z-50 border-b border-white/10 bg-background/88 backdrop-blur-md">
       <nav
-        className="flex h-14 w-full max-w-none items-center justify-between gap-4 px-[clamp(1rem,2.2vw,2.75rem)] sm:h-16"
+        className="flex h-16 w-full max-w-none items-center justify-between gap-4 px-[clamp(1rem,2.2vw,2.75rem)] sm:h-20"
         aria-label="Primary"
       >
-        <a
+        <Link
           href="/"
-          className="group flex min-w-0 items-center gap-3 focus-visible:outline-none focus-visible:ring-3 focus-visible:ring-ring/50"
+          className="group min-w-0 focus-visible:outline-none focus-visible:ring-3 focus-visible:ring-ring/50"
           aria-label="Sustainably Speaking Africa home"
         >
-          <span className="relative grid size-9 shrink-0 place-items-center rounded-full border border-primary/55 bg-background/30 text-primary sm:size-10">
-            <span className="absolute inset-1 rounded-full border border-secondary/30 transition-transform duration-500 group-hover:rotate-45" />
-            <Waveform className="size-5" weight="bold" aria-hidden="true" />
-          </span>
-          <span className="flex min-w-0 flex-col leading-none">
-            <span className="truncate text-sm font-extrabold tracking-[0.01em] text-foreground">
-              Sustainably Speaking
-            </span>
-            <span className="mt-1 font-display text-sm italic text-secondary">Africa</span>
-          </span>
-        </a>
+          <SiteLogo size="lg" priority className="max-w-[min(100%,18rem)] sm:max-w-[22rem]" />
+        </Link>
 
         <div className="hidden items-center gap-8 md:flex">
           {navItems.map((item) => (
@@ -52,8 +45,6 @@ export function SiteHeader() {
         </div>
 
         <div className="flex items-center gap-2 sm:gap-3">
-          
-
           <button
             type="button"
             className="inline-flex size-10 items-center justify-center rounded-full border border-border text-foreground md:hidden"

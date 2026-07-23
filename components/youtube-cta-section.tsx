@@ -1,10 +1,36 @@
 "use client"
 
 import { useEffect, useRef } from "react"
-import { Bell, Play } from "@phosphor-icons/react"
+import {
+  ApplePodcastsLogo,
+  ShareNetwork,
+  SpotifyLogo,
+  YoutubeLogo,
+} from "@phosphor-icons/react"
 import gsap from "gsap"
 
-import { youtubeChannel } from "@/lib/site-data"
+import { siteConfig } from "@/lib/site"
+
+const channelLinks = [
+  {
+    label: "YouTube",
+    href: siteConfig.social.youtube,
+    icon: YoutubeLogo,
+    iconClass: "text-[oklch(0.55_0.22_25)]",
+  },
+  {
+    label: "Spotify",
+    href: siteConfig.platforms.spotify,
+    icon: SpotifyLogo,
+    iconClass: "text-[oklch(0.62_0.17_155)]",
+  },
+  {
+    label: "Apple Podcasts",
+    href: siteConfig.platforms.applePodcasts,
+    icon: ApplePodcastsLogo,
+    iconClass: "text-[oklch(0.58_0.22_330)]",
+  },
+] as const
 
 function TornEdge({ flip = false }: { flip?: boolean }) {
   return (
@@ -43,8 +69,7 @@ export function YoutubeCtaSection() {
           const band = section.querySelector("[data-cta-band]")
           const play = section.querySelector("[data-cta-play]")
           const lines = gsap.utils.toArray<HTMLElement>("[data-cta-line]")
-          const pill = section.querySelector("[data-cta-pill]")
-          const bell = section.querySelector("[data-cta-bell]")
+          const pills = gsap.utils.toArray<HTMLElement>("[data-cta-pill]")
 
           const timeline = gsap.timeline({ defaults: { ease: "expo.out" } })
 
@@ -75,30 +100,15 @@ export function YoutubeCtaSection() {
               "-=0.3"
             )
             .from(
-              pill,
+              pills,
               {
-                x: -24,
+                y: 16,
                 opacity: 0,
-                duration: 0.55,
+                duration: 0.5,
+                stagger: 0.1,
               },
               "-=0.25"
             )
-            .from(
-              bell,
-              {
-                scale: 0.5,
-                opacity: 0,
-                duration: 0.4,
-              },
-              "-=0.2"
-            )
-            .to(bell, {
-              rotation: 12,
-              duration: 0.12,
-              yoyo: true,
-              repeat: 3,
-              ease: "power1.inOut",
-            })
         }, section)
 
         observer.disconnect()
@@ -114,27 +124,24 @@ export function YoutubeCtaSection() {
   return (
     <section
       ref={sectionRef}
-      id="youtube"
+      id="social"
       className="light-surface px-[clamp(1rem,2.2vw,2.75rem)] py-[clamp(2rem,4vw,3.5rem)]"
-      aria-label="Follow Sustainably Speaking Africa on YouTube"
+      aria-label="Follow Sustainably Speaking Africa on social channels"
     >
       <div className="mx-auto max-w-[96rem]">
-        <a
-          href={youtubeChannel.url}
-          target="_blank"
-          rel="noreferrer"
+        <div
           data-cta-band
-          className="group relative block overflow-hidden bg-primary px-[clamp(1.25rem,4vw,4rem)] py-[clamp(2.25rem,4.5vw,3.5rem)] text-primary-foreground focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-ring/50"
+          className="relative overflow-hidden bg-primary px-[clamp(1.25rem,4vw,4rem)] py-[clamp(2.25rem,4.5vw,3.5rem)] text-primary-foreground"
         >
           <TornEdge />
           <TornEdge flip />
 
-          <div className="relative z-10 flex flex-col items-start gap-5 sm:flex-row sm:items-center sm:justify-center sm:gap-6 lg:gap-8">
+          <div className="relative z-10 flex flex-col items-start gap-6 sm:flex-row sm:items-center sm:justify-center sm:gap-7 lg:gap-10">
             <span
               data-cta-play
-              className="grid size-16 shrink-0 place-items-center rounded-2xl bg-[oklch(0.16_0.04_164)] text-[oklch(0.95_0.014_92)] shadow-[0_10px_30px_oklch(0.16_0.04_164_/_0.28)] transition-transform duration-300 group-hover:scale-105 sm:size-20"
+              className="grid size-16 shrink-0 place-items-center rounded-2xl bg-[oklch(0.16_0.04_164)] text-[oklch(0.95_0.014_92)] shadow-[0_10px_30px_oklch(0.16_0.04_164_/_0.28)] sm:size-20"
             >
-              <Play className="ml-0.5 size-7" weight="fill" aria-hidden="true" />
+              <ShareNetwork className="size-7" weight="fill" aria-hidden="true" />
             </span>
 
             <div className="min-w-0">
@@ -148,27 +155,31 @@ export function YoutubeCtaSection() {
                 data-cta-line
                 className="mt-2 text-[clamp(1.35rem,3vw,2.35rem)] font-black leading-none tracking-[0.01em]"
               >
-                {youtubeChannel.label}
+                Our Social Channels
               </p>
             </div>
 
-            <div className="flex items-stretch">
-              <span
-                data-cta-pill
-                className="inline-flex items-center rounded-l-full rounded-r-none bg-[oklch(0.97_0.01_92)] px-5 py-3 text-sm font-extrabold text-[oklch(0.16_0.04_164)] sm:px-6 sm:text-base"
-              >
-                {youtubeChannel.handle}
-              </span>
-              <span
-                data-cta-bell
-                className="inline-flex items-center rounded-r-2xl rounded-l-none bg-[oklch(0.16_0.04_164)] px-3.5 text-[oklch(0.95_0.014_92)]"
-                aria-hidden="true"
-              >
-                <Bell className="size-5" weight="fill" />
-              </span>
+            <div className="flex flex-wrap items-center gap-3">
+              {channelLinks.map((channel) => (
+                <a
+                  key={channel.label}
+                  href={channel.href}
+                  target="_blank"
+                  rel="noreferrer"
+                  data-cta-pill
+                  className="inline-flex items-center gap-2.5 rounded-full border border-[oklch(0.16_0.04_164_/_0.18)] bg-[oklch(0.16_0.04_164_/_0.08)] px-5 py-3 text-sm font-extrabold text-primary-foreground backdrop-blur-[2px] transition-colors duration-300 hover:bg-[oklch(0.16_0.04_164_/_0.14)] focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-ring/50 sm:px-6 sm:text-base"
+                >
+                  <channel.icon
+                    className={`size-5 ${channel.iconClass}`}
+                    weight="fill"
+                    aria-hidden="true"
+                  />
+                  {channel.label}
+                </a>
+              ))}
             </div>
           </div>
-        </a>
+        </div>
       </div>
     </section>
   )

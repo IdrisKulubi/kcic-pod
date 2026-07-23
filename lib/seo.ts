@@ -110,6 +110,7 @@ export function buildWebsiteJsonLd() {
       "@type": "Organization",
       name: siteConfig.publisher,
       url: getSiteUrl(),
+      logo: absoluteUrl(siteConfig.logo),
     },
     inLanguage: siteConfig.language,
   }
@@ -123,7 +124,16 @@ export function buildOrganizationJsonLd() {
     alternateName: "KCIC",
     url: getSiteUrl(),
     email: siteConfig.email,
-    sameAs: [siteConfig.social.youtube],
+    logo: absoluteUrl(siteConfig.logo),
+    sameAs: [
+      siteConfig.social.youtube,
+      siteConfig.social.linkedin,
+      siteConfig.social.facebook,
+      siteConfig.social.instagram,
+      siteConfig.social.x,
+      siteConfig.platforms.spotify,
+      siteConfig.platforms.applePodcasts,
+    ],
   }
 }
 
@@ -142,8 +152,9 @@ export function buildPodcastSeriesJsonLd() {
     publisher: {
       "@type": "Organization",
       name: siteConfig.publisher,
+      logo: absoluteUrl(siteConfig.logo),
     },
-    image: featuredEpisode.poster,
+    image: [absoluteUrl(siteConfig.logo), featuredEpisode.poster],
     inLanguage: siteConfig.language,
     genre: ["Climate", "Sustainability", "Innovation", "Africa"],
     episode: podcastEpisodes.slice(0, 12).map((episode, index) =>
