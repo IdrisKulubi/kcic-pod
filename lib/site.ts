@@ -1,9 +1,9 @@
 export const siteConfig = {
   name: "Sustainably Speaking Africa",
   shortName: "SSA",
-  tagline: "The Living Frequency of Change",
+  tagline: "Amplifying African Narratives of Change",
   description:
-    "Sustainably Speaking Africa is a KCIC podcast featuring African voices on climate finance, clean energy, circularity, food systems, entrepreneurship, and leadership.",
+    "Sustainably Speaking Africa amplifies African-led climate solutions through local context, lived experience, and conversations with the people building resilient futures.",
   keywords: [
     "Sustainably Speaking Africa",
     "KCIC podcast",

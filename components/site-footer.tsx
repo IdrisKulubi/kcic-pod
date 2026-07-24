@@ -119,16 +119,19 @@ export function SiteFooter() {
           <div>
             <Link
               href="/"
-              className="inline-flex focus-visible:outline-none focus-visible:ring-3 focus-visible:ring-ring/50"
+              className="inline-flex focus-visible:ring-3 focus-visible:ring-ring/50 focus-visible:outline-none"
               aria-label="Sustainably Speaking Africa home"
             >
-              <SiteLogo size="md" className="max-w-[min(100%,16rem)] rounded-md" />
+              <SiteLogo
+                size="md"
+                className="max-w-[min(100%,16rem)] rounded-md"
+              />
             </Link>
 
-            <p className="mt-5 max-w-sm text-pretty text-sm leading-6 text-muted-foreground">
-              African climate stories in full signal. Conversations with founders,
-              financiers, and community builders shaping innovation across the
-              continent.
+            <p className="mt-5 max-w-sm text-sm leading-6 text-pretty text-muted-foreground">
+              Amplifying African-led climate solutions through grounded,
+              jargon-free conversations with the people shaping resilient
+              futures.
             </p>
 
             <div className="mt-6 flex items-center gap-3">
@@ -138,7 +141,7 @@ export function SiteFooter() {
                   href={social.href}
                   target="_blank"
                   rel="noreferrer"
-                  className="grid size-9 place-items-center rounded-lg transition-colors hover:bg-muted focus-visible:outline-none focus-visible:ring-3 focus-visible:ring-ring/50"
+                  className="grid size-9 place-items-center rounded-lg transition-colors hover:bg-muted focus-visible:ring-3 focus-visible:ring-ring/50 focus-visible:outline-none"
                   aria-label={social.label}
                 >
                   <social.icon
@@ -162,7 +165,7 @@ export function SiteFooter() {
                     <li key={link.label}>
                       <a
                         href={link.href}
-                        className="text-sm text-muted-foreground transition-colors hover:text-foreground focus-visible:outline-none focus-visible:ring-3 focus-visible:ring-ring/50"
+                        className="text-sm text-muted-foreground transition-colors hover:text-foreground focus-visible:ring-3 focus-visible:ring-ring/50 focus-visible:outline-none"
                       >
                         {link.label}
                       </a>
@@ -185,7 +188,7 @@ export function SiteFooter() {
                 <a
                   key={link.label}
                   href={link.href}
-                  className="text-sm text-muted-foreground underline decoration-border underline-offset-4 transition-colors hover:text-foreground focus-visible:outline-none focus-visible:ring-3 focus-visible:ring-ring/50"
+                  className="text-sm text-muted-foreground underline decoration-border underline-offset-4 transition-colors hover:text-foreground focus-visible:ring-3 focus-visible:ring-ring/50 focus-visible:outline-none"
                 >
                   {link.label}
                 </a>

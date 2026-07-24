@@ -141,21 +141,25 @@ export function YoutubeCtaSection() {
               data-cta-play
               className="grid size-16 shrink-0 place-items-center rounded-2xl bg-[oklch(0.16_0.04_164)] text-[oklch(0.95_0.014_92)] shadow-[0_10px_30px_oklch(0.16_0.04_164_/_0.28)] sm:size-20"
             >
-              <ShareNetwork className="size-7" weight="fill" aria-hidden="true" />
+              <ShareNetwork
+                className="size-7"
+                weight="fill"
+                aria-hidden="true"
+              />
             </span>
 
             <div className="min-w-0">
               <p
                 data-cta-line
-                className="text-[clamp(1.35rem,3vw,2.35rem)] font-black leading-none tracking-[0.01em]"
+                className="text-[clamp(1.35rem,3vw,2.35rem)] leading-none font-black tracking-[0.01em]"
               >
-                Follow Us on
+                Hear Africa&apos;s climate future
               </p>
               <p
                 data-cta-line
-                className="mt-2 text-[clamp(1.35rem,3vw,2.35rem)] font-black leading-none tracking-[0.01em]"
+                className="mt-2 text-[clamp(1.35rem,3vw,2.35rem)] leading-none font-black tracking-[0.01em]"
               >
-                Our Social Channels
+                from the people building it
               </p>
             </div>
 
@@ -167,7 +171,7 @@ export function YoutubeCtaSection() {
                   target="_blank"
                   rel="noreferrer"
                   data-cta-pill
-                  className="inline-flex items-center gap-2.5 rounded-full border border-[oklch(0.16_0.04_164_/_0.18)] bg-[oklch(0.16_0.04_164_/_0.08)] px-5 py-3 text-sm font-extrabold text-primary-foreground backdrop-blur-[2px] transition-colors duration-300 hover:bg-[oklch(0.16_0.04_164_/_0.14)] focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-ring/50 sm:px-6 sm:text-base"
+                  className="inline-flex items-center gap-2.5 rounded-full border border-[oklch(0.16_0.04_164_/_0.18)] bg-[oklch(0.16_0.04_164_/_0.08)] px-5 py-3 text-sm font-extrabold text-primary-foreground backdrop-blur-[2px] transition-colors duration-300 hover:bg-[oklch(0.16_0.04_164_/_0.14)] focus-visible:ring-4 focus-visible:ring-ring/50 focus-visible:outline-none sm:px-6 sm:text-base"
                 >
                   <channel.icon
                     className={`size-5 ${channel.iconClass}`}
