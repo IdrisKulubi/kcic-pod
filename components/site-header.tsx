@@ -34,13 +34,13 @@ export function SiteHeader() {
 
         <div className="hidden items-center gap-8 md:flex">
           {navItems.map((item) => (
-            <a
+            <Link
               key={item.href}
               href={item.href}
               className="relative py-2 text-[0.68rem] font-extrabold uppercase tracking-[0.18em] text-foreground/65 transition-colors after:absolute after:inset-x-0 after:bottom-0 after:h-px after:origin-left after:scale-x-0 after:bg-primary after:transition-transform hover:text-foreground hover:after:scale-x-100 focus-visible:outline-none focus-visible:ring-3 focus-visible:ring-ring/50"
             >
               {item.label}
-            </a>
+            </Link>
           ))}
         </div>
 
@@ -71,14 +71,14 @@ export function SiteHeader() {
       >
         <div className="mx-auto flex max-w-7xl flex-col gap-1 px-5 py-4 sm:px-8">
           {navItems.map((item) => (
-            <a
+            <Link
               key={item.href}
               href={item.href}
               className="rounded-lg px-3 py-3 text-base font-medium text-foreground hover:bg-muted focus-visible:outline-none focus-visible:ring-3 focus-visible:ring-ring/50"
               onClick={() => setMenuOpen(false)}
             >
               {item.label}
-            </a>
+            </Link>
           ))}
         </div>
       </div>

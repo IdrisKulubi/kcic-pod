@@ -101,8 +101,11 @@ export function FeaturedEpisodeSection() {
             data-episode-reveal
             className="max-w-md text-pretty text-sm font-semibold leading-6 text-[oklch(0.25_0.04_164)] sm:text-base sm:leading-7"
           >
-            A live opening statement for a podcast built around grounded,
-            African-led sustainability dialogue.
+            Africa’s green economy is gaining momentum through investment in
+            renewable energy, climate-smart agriculture, and the circular
+            economy. It’s time to tell authentic stories of African-led
+            solutions and connect them to the capital, people, and policies
+            needed to scale impact.
           </p>
         </header>
 

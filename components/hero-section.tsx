@@ -215,10 +215,16 @@ export function HeroSection() {
               data-hero-reveal
               className="mt-7 grid max-w-3xl gap-6 border-t border-white/18 pt-5 sm:grid-cols-[minmax(0,1fr)_auto] sm:items-end"
             >
-              <p className="max-w-xl text-sm leading-7 text-pretty text-foreground/76 sm:text-base">
-                Amplifying African-led solutions through local context, lived
-                experience, and the people turning climate ideas into action.
-              </p>
+              <div className="max-w-xl">
+                <p className="text-sm font-extrabold text-foreground sm:text-base">
+                  Sustainably Speaking Africa
+                </p>
+                <p className="mt-2 text-sm leading-7 text-pretty text-foreground/76 sm:text-base">
+                  A podcast exploring authentic stories of Africa’s
+                  sustainability journey through the lived experiences and
+                  tangible successes of the people building its solutions.
+                </p>
+              </div>
               <a
                 href="#episodes"
                 className="group inline-flex h-13 w-fit min-w-13 items-center justify-center gap-3 rounded-full bg-primary px-6 text-sm font-extrabold text-primary-foreground transition-transform duration-300 hover:-translate-y-1 focus-visible:ring-3 focus-visible:ring-ring/60 focus-visible:outline-none"
@@ -298,10 +304,13 @@ export function HeroSection() {
               ))}
           </div>
 
-          <div className="flex items-center justify-between gap-4 lg:justify-end">
+          <div className="flex items-center justify-end gap-4">
+            <p className="text-[0.68rem] font-extrabold tracking-[0.16em] text-foreground/70 uppercase">
+              Follow us on
+            </p>
             <div
               className="flex flex-wrap items-center gap-3"
-              aria-label="Listen on"
+              aria-label="Follow us on"
             >
               {listenLinks.map((link) => (
                 <a
