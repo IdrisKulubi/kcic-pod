@@ -5,7 +5,7 @@ import bcrypt from "bcryptjs"
 import { eq } from "drizzle-orm"
 
 import db from "../db/client"
-import { account, user } from "../db/schema"
+import { account, session, user } from "../db/schema"
 
 function readArg(name: string) {
   const index = process.argv.indexOf(`--${name}`)
@@ -17,10 +17,11 @@ async function main() {
   const email = readArg("email")?.toLowerCase().trim()
   const name = readArg("name")?.trim()
   const password = readArg("password")
+  const force = process.argv.includes("--force")
 
   if (!email || !name || !password) {
     console.error(
-      'Usage: npm run staff:create -- --email you@example.com --name "Staff Name" --password "secure-password"'
+      'Usage: pnpm run staff:create -- --email you@example.com --name "Staff Name" --password "secure-password" [--force]'
     )
     process.exit(1)
   }
@@ -37,8 +38,16 @@ async function main() {
     .limit(1)
 
   if (existing) {
-    console.error("A user with this email already exists")
-    process.exit(1)
+    if (!force) {
+      console.error(
+        "A user with this email already exists (use --force to replace)"
+      )
+      process.exit(1)
+    }
+
+    await db.delete(session).where(eq(session.userId, existing.id))
+    await db.delete(account).where(eq(account.userId, existing.id))
+    await db.delete(user).where(eq(user.id, existing.id))
   }
 
   const userId = randomUUID()

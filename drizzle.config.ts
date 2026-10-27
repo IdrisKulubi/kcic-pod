@@ -1,3 +1,5 @@
+import "./lib/network"
+
 import { defineConfig } from "drizzle-kit"
 
 import { getPostgresUrl } from "./lib/postgres-url"

@@ -1,4 +1,5 @@
 import {
+  bigint,
   pgTable,
   index,
   text,
@@ -68,7 +69,7 @@ export const rateLimit = pgTable("rate_limit", {
   id: text("id").primaryKey(),
   key: text("key").notNull().unique(),
   count: integer("count").notNull(),
-  lastRequest: integer("last_request").notNull(),
+  lastRequest: bigint("last_request", { mode: "number" }).notNull(),
 })
 
 export const siteContent = pgTable("site_content", {

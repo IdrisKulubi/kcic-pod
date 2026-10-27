@@ -1,5 +1,6 @@
 "use client"
 
+import { EyeIcon, EyeSlashIcon } from "@phosphor-icons/react"
 import { useState } from "react"
 import { useRouter } from "next/navigation"
 import { toast } from "sonner"
@@ -13,6 +14,7 @@ import { signIn } from "@/lib/auth-client"
 export function StaffLoginForm() {
   const router = useRouter()
   const [isSubmitting, setIsSubmitting] = useState(false)
+  const [showPassword, setShowPassword] = useState(false)
 
   async function handleSubmit(event: React.FormEvent<HTMLFormElement>) {
     event.preventDefault()
@@ -30,7 +32,11 @@ export function StaffLoginForm() {
     setIsSubmitting(false)
 
     if (result.error) {
-      toast.error("Invalid email or password")
+      const message =
+        result.error.status >= 500
+          ? "Could not reach the database. Check your connection and try again."
+          : "Invalid email or password"
+      toast.error(message)
       return
     }
 
@@ -58,14 +64,28 @@ export function StaffLoginForm() {
           </div>
           <div className="grid gap-2">
             <Label htmlFor="password">Password</Label>
-            <Input
-              id="password"
-              name="password"
-              type="password"
-              autoComplete="current-password"
-              required
-              className="border-white/15 bg-[oklch(0.12_0.03_164)]"
-            />
+            <div className="relative">
+              <Input
+                id="password"
+                name="password"
+                type={showPassword ? "text" : "password"}
+                autoComplete="current-password"
+                required
+                className="border-white/15 bg-[oklch(0.12_0.03_164)] pr-10"
+              />
+              <button
+                type="button"
+                onClick={() => setShowPassword((value) => !value)}
+                className="absolute top-1/2 right-2 -translate-y-1/2 rounded-md p-1.5 text-[oklch(0.75_0.02_92)] hover:text-[oklch(0.96_0.01_92)]"
+                aria-label={showPassword ? "Hide password" : "Show password"}
+              >
+                {showPassword ? (
+                  <EyeSlashIcon className="size-5" aria-hidden />
+                ) : (
+                  <EyeIcon className="size-5" aria-hidden />
+                )}
+              </button>
+            </div>
           </div>
           <Button
             type="submit"

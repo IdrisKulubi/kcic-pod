@@ -1,0 +1,39 @@
+{
+  "type": "diff",
+  "version": "9",
+  "dialect": "postgres",
+  "id": "48a7213c-bef2-47f6-b1a4-24cacd757f0f",
+  "prevIds": [
+    "aaee71d4-e5a4-4efd-b37b-4cf99130b0f6"
+  ],
+  "footprints": [
+    {
+      "statementType": "alter_column",
+      "statementTarget": [
+        "column",
+        "public",
+        "rate_limit",
+        "last_request"
+      ],
+      "writes": [
+        "s|colprop|public.rate_limit.last_request.type",
+        "s|colprop|public.rate_limit.last_request.default"
+      ],
+      "reads": [
+        "n|tbl|public.rate_limit",
+        "n|sch|public",
+        "n|col|public.rate_limit.last_request"
+      ],
+      "sqlHash": "a8fd6ed806eec81c"
+    }
+  ],
+  "deltas": [
+    {
+      "op": "alter",
+      "key": "columns\u0000[\"public\",\"rate_limit\",\"last_request\"]",
+      "set": {
+        "type": "bigint"
+      }
+    }
+  ]
+}
