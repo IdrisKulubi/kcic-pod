@@ -29,7 +29,7 @@ export function StaffShell({ userName, userEmail, children }: StaffShellProps) {
   return (
     <div className="min-h-svh bg-[oklch(0.11_0.032_164)] text-[oklch(0.96_0.01_92)]">
       <div className="mx-auto grid min-h-svh max-w-[120rem] lg:grid-cols-[16rem_minmax(0,1fr)]">
-        <aside className="border-b border-white/10 px-4 py-6 lg:border-r lg:border-b-0 lg:px-5 lg:py-8">
+        <aside className="flex flex-col border-b border-white/10 px-4 py-6 lg:min-h-svh lg:border-r lg:border-b-0 lg:px-5 lg:py-8">
           <div className="mb-8">
             <p className="text-xs font-extrabold tracking-[0.18em] text-primary uppercase">
               Staff workspace
@@ -38,7 +38,7 @@ export function StaffShell({ userName, userEmail, children }: StaffShellProps) {
             <p className="mt-1 text-xs text-[oklch(0.78_0.02_92)]">{userEmail}</p>
           </div>
           <StaffSidebar />
-          <div className="mt-8 grid gap-2">
+          <div className="mt-auto grid gap-2 pt-8">
             <Link
               href="/"
               target="_blank"
