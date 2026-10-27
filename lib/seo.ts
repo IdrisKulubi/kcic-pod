@@ -201,12 +201,12 @@ function buildPodcastEpisodeNode(episode: PodcastEpisode, position?: number) {
   }
 }
 
-export function buildEpisodeListJsonLd() {
+export function buildEpisodeListJsonLd(episodes: PodcastEpisode[] = podcastEpisodes) {
   return {
     "@context": "https://schema.org",
     "@type": "ItemList",
     name: `${siteConfig.name} episodes`,
-    itemListElement: podcastEpisodes.map((episode, index) => ({
+    itemListElement: episodes.map((episode, index) => ({
       "@type": "ListItem",
       position: index + 1,
       url: absoluteUrl(`/episodes/${episode.id}`),

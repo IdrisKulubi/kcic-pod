@@ -8,12 +8,11 @@ import { JsonLd } from "@/components/json-ld"
 import { SiteFooter } from "@/components/site-footer"
 import { SiteHeader } from "@/components/site-header"
 import {
-  getAllIndexableEpisodes,
-  getEpisodeById,
   getEpisodePagePath,
   getEpisodeThumbnail,
   getEpisodeUrl,
 } from "@/lib/episodes"
+import { getEpisodeById, getIndexableEpisodeIds } from "@/lib/queries"
 import { buildPageMetadata, buildPodcastEpisodeJsonLd } from "@/lib/seo"
 import { siteConfig } from "@/lib/site"
 
@@ -21,15 +20,18 @@ type EpisodePageProps = {
   params: Promise<{ id: string }>
 }
 
-export function generateStaticParams() {
-  return getAllIndexableEpisodes().map((episode) => ({ id: episode.id }))
+export const dynamicParams = true
+
+export async function generateStaticParams() {
+  const ids = await getIndexableEpisodeIds()
+  return ids.map((id) => ({ id }))
 }
 
 export async function generateMetadata({
   params,
 }: EpisodePageProps): Promise<Metadata> {
   const { id } = await params
-  const episode = getEpisodeById(id)
+  const episode = await getEpisodeById(id)
 
   if (!episode) {
     return buildPageMetadata({
@@ -54,7 +56,7 @@ export async function generateMetadata({
 
 export default async function EpisodePage({ params }: EpisodePageProps) {
   const { id } = await params
-  const episode = getEpisodeById(id)
+  const episode = await getEpisodeById(id)
 
   if (!episode) notFound()
 

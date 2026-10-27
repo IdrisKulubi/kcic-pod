@@ -1,19 +1,19 @@
 import type { MetadataRoute } from "next"
 
-import { getAllIndexableEpisodes, getEpisodePagePath } from "@/lib/episodes"
+import { getEpisodePagePath } from "@/lib/episodes"
+import { getAllEpisodes } from "@/lib/queries"
 import { absoluteUrl } from "@/lib/site"
 
-export default function sitemap(): MetadataRoute.Sitemap {
+export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const now = new Date()
+  const episodes = await getAllEpisodes()
 
-  const episodeEntries: MetadataRoute.Sitemap = getAllIndexableEpisodes().map(
-    (episode) => ({
-      url: absoluteUrl(getEpisodePagePath(episode.id)),
-      lastModified: now,
-      changeFrequency: "monthly",
-      priority: episode.featured ? 0.85 : 0.7,
-    })
-  )
+  const episodeEntries: MetadataRoute.Sitemap = episodes.map((episode) => ({
+    url: absoluteUrl(getEpisodePagePath(episode.id)),
+    lastModified: now,
+    changeFrequency: "monthly",
+    priority: 0.7,
+  }))
 
   return [
     {

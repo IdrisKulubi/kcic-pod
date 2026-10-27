@@ -3,11 +3,19 @@
 import { useEffect, useRef } from "react"
 import gsap from "gsap"
 
-import { featuredPodcastEpisodes, podcastEpisodes } from "@/lib/episodes"
+import type { PodcastEpisode } from "@/lib/episodes"
 import { EpisodeIndex } from "./episode-index"
 import { FeaturedEpisodes } from "./featured-episodes"
 
-export function EpisodeLibrarySection() {
+type EpisodeLibrarySectionProps = {
+  topFeatured: PodcastEpisode[]
+  allEpisodes: PodcastEpisode[]
+}
+
+export function EpisodeLibrarySection({
+  topFeatured,
+  allEpisodes,
+}: EpisodeLibrarySectionProps) {
   const sectionRef = useRef<HTMLElement>(null)
 
   useEffect(() => {
@@ -48,13 +56,13 @@ export function EpisodeLibrarySection() {
       <div className="mx-auto max-w-[96rem]">
         <div className="grid gap-[clamp(3rem,5vw,6rem)] lg:grid-cols-[minmax(0,0.96fr)_minmax(26rem,0.84fr)] lg:items-stretch">
           <div data-library-reveal>
-            <FeaturedEpisodes episodes={featuredPodcastEpisodes} />
+            <FeaturedEpisodes episodes={topFeatured} />
           </div>
           <div
             data-library-reveal
             className="min-h-0 lg:flex lg:h-0 lg:min-h-full lg:flex-col lg:overflow-hidden"
           >
-            <EpisodeIndex episodes={podcastEpisodes} />
+            <EpisodeIndex episodes={allEpisodes} />
           </div>
         </div>
       </div>

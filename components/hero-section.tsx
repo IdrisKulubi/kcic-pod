@@ -12,17 +12,13 @@ import {
 import gsap from "gsap"
 
 import { siteLogoSrc } from "@/components/site-logo"
+import type { HeroContent } from "@/lib/cms-types"
 import { waveformBars } from "@/lib/site-data"
 import { siteConfig } from "@/lib/site"
 
-const titleLines = [
-  { text: "Sustainably", className: "font-sans font-black" },
-  {
-    text: "Speaking",
-    className: "font-display italic font-normal text-primary",
-  },
-  { text: "Africa", className: "font-sans font-black" },
-] as const
+type HeroSectionProps = {
+  content: HeroContent
+}
 
 const listenLinks = [
   {
@@ -45,8 +41,17 @@ const listenLinks = [
   },
 ] as const
 
-export function HeroSection() {
+export function HeroSection({ content }: HeroSectionProps) {
   const rootRef = useRef<HTMLElement>(null)
+
+  const titleLines = [
+    { text: content.heroTitleLine1, className: "font-sans font-black" },
+    {
+      text: content.heroTitleAccent,
+      className: "font-display italic font-normal text-primary",
+    },
+    { text: content.heroTitleLine3, className: "font-sans font-black" },
+  ] as const
 
   useEffect(() => {
     const root = rootRef.current
@@ -217,12 +222,10 @@ export function HeroSection() {
             >
               <div className="max-w-xl">
                 <p className="text-sm font-extrabold text-foreground sm:text-base">
-                  Sustainably Speaking Africa
+                  {content.heroSubheading}
                 </p>
                 <p className="mt-2 text-sm leading-7 text-pretty text-foreground/76 sm:text-base">
-                  A podcast exploring authentic stories of Africa’s
-                  sustainability journey through the lived experiences and
-                  tangible successes of the people building its solutions.
+                  {content.heroDescription}
                 </p>
               </div>
               <a
@@ -284,7 +287,7 @@ export function HeroSection() {
             </span>
             <span className="h-px w-10 bg-secondary/60" />
             <p className="text-sm font-semibold text-foreground/88">
-              Amplifying African narratives of change
+              {content.heroTagline}
             </p>
           </div>
 

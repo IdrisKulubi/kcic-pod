@@ -13,6 +13,10 @@ type FeaturedEpisodesProps = {
 }
 
 export function FeaturedEpisodes({ episodes }: FeaturedEpisodesProps) {
+  if (episodes.length === 0) {
+    return null
+  }
+
   const [leadEpisode, ...secondaryEpisodes] = episodes
 
   return (

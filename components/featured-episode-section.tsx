@@ -12,9 +12,16 @@ import {
 } from "@phosphor-icons/react"
 import gsap from "gsap"
 
-import { featuredEpisode, waveformBars } from "@/lib/site-data"
+import type { FeaturedEpisodeContent } from "@/lib/cms-types"
+import { waveformBars } from "@/lib/site-data"
 
-export function FeaturedEpisodeSection() {
+type FeaturedEpisodeSectionProps = {
+  episode: FeaturedEpisodeContent
+}
+
+export function FeaturedEpisodeSection({
+  episode: featuredEpisode,
+}: FeaturedEpisodeSectionProps) {
   const sectionRef = useRef<HTMLElement>(null)
   const [isPlaying, setIsPlaying] = useState(false)
 
@@ -87,12 +94,12 @@ export function FeaturedEpisodeSection() {
         <header className="relative grid gap-4 pb-[clamp(1.25rem,2.5vw,2rem)] after:absolute after:inset-x-0 after:bottom-0 after:h-px after:bg-linear-to-r after:from-primary after:via-primary after:to-secondary lg:grid-cols-[minmax(0,1fr)_minmax(18rem,0.38fr)] lg:items-end">
           <div data-episode-reveal>
             <p className="mb-2 text-sm font-bold text-[oklch(0.34_0.085_155)]">
-              The launch conversation
+              {featuredEpisode.eyebrow}
             </p>
             <h2 className="max-w-4xl text-balance text-[clamp(2.25rem,4.2vw,3.65rem)] font-black leading-[0.94] tracking-[0.01em]">
-              Why Africa.
+              {featuredEpisode.headingLine}
               <span className="block font-display font-normal italic text-[oklch(0.46_0.17_145)]">
-                Why now?
+                {featuredEpisode.headingAccent}
               </span>
             </h2>
           </div>
@@ -101,11 +108,7 @@ export function FeaturedEpisodeSection() {
             data-episode-reveal
             className="max-w-md text-pretty text-sm font-semibold leading-6 text-[oklch(0.25_0.04_164)] sm:text-base sm:leading-7"
           >
-            Africa’s green economy is gaining momentum through investment in
-            renewable energy, climate-smart agriculture, and the circular
-            economy. It’s time to tell authentic stories of African-led
-            solutions and connect them to the capital, people, and policies
-            needed to scale impact.
+            {featuredEpisode.intro}
           </p>
         </header>
 
@@ -195,37 +198,43 @@ export function FeaturedEpisodeSection() {
               ))}
             </div>
 
-            <div
-              data-episode-reveal
-              className="mt-5 border-y border-[oklch(0.17_0.038_164_/_0.2)] py-4"
-            >
-              <div className="grid gap-5 sm:grid-cols-[0.72fr_1.28fr]">
-                <div>
-                  <p className="text-xs font-bold text-[oklch(0.39_0.085_155)]">
-                    Moderator
-                  </p>
-                  <p className="mt-1 text-base font-extrabold text-[oklch(0.17_0.038_164)]">
-                    {featuredEpisode.moderator}
-                  </p>
-                </div>
+            {featuredEpisode.moderator || featuredEpisode.panelists?.length ? (
+              <div
+                data-episode-reveal
+                className="mt-5 border-y border-[oklch(0.17_0.038_164_/_0.2)] py-4"
+              >
+                <div className="grid gap-5 sm:grid-cols-[0.72fr_1.28fr]">
+                  {featuredEpisode.moderator ? (
+                    <div>
+                      <p className="text-xs font-bold text-[oklch(0.39_0.085_155)]">
+                        Moderator
+                      </p>
+                      <p className="mt-1 text-base font-extrabold text-[oklch(0.17_0.038_164)]">
+                        {featuredEpisode.moderator}
+                      </p>
+                    </div>
+                  ) : null}
 
-                <div>
-                  <p className="text-xs font-bold text-[oklch(0.39_0.085_155)]">
-                    In conversation
-                  </p>
-                  <ul className="mt-2 flex flex-wrap gap-x-4 gap-y-2">
-                    {featuredEpisode.panelists.map((panelist) => (
-                      <li
-                        key={panelist}
-                        className="text-sm font-bold text-[oklch(0.22_0.04_164)]"
-                      >
-                        {panelist}
-                      </li>
-                    ))}
-                  </ul>
+                  {featuredEpisode.panelists?.length ? (
+                    <div>
+                      <p className="text-xs font-bold text-[oklch(0.39_0.085_155)]">
+                        In conversation
+                      </p>
+                      <ul className="mt-2 flex flex-wrap gap-x-4 gap-y-2">
+                        {featuredEpisode.panelists.map((panelist) => (
+                          <li
+                            key={panelist}
+                            className="text-sm font-bold text-[oklch(0.22_0.04_164)]"
+                          >
+                            {panelist}
+                          </li>
+                        ))}
+                      </ul>
+                    </div>
+                  ) : null}
                 </div>
               </div>
-            </div>
+            ) : null}
 
             <div data-episode-reveal className="mt-5 flex flex-wrap gap-3">
               <Link
@@ -255,20 +264,21 @@ export function FeaturedEpisodeSection() {
           </article>
         </div>
 
-        <blockquote
-          data-episode-reveal
-          className="relative overflow-hidden rounded-md bg-[oklch(0.14_0.036_164)] px-[clamp(1.25rem,3vw,3rem)] py-[clamp(1.75rem,3.5vw,3rem)] text-[oklch(0.95_0.014_92)]"
-        >
-          <Quotes
-            className="absolute right-4 top-4 size-12 text-[oklch(0.77_0.2_145_/_0.3)] sm:right-6 sm:top-6 sm:size-16"
-            weight="fill"
-            aria-hidden="true"
-          />
-          <p className="relative max-w-5xl text-balance font-display text-[clamp(1.5rem,3vw,2.85rem)] font-normal italic leading-[1.08] text-[oklch(0.92_0.11_145)]">
-            Sustainability works best when local context, lived experience,
-            and real conversations come first.
-          </p>
-        </blockquote>
+        {featuredEpisode.quote ? (
+          <blockquote
+            data-episode-reveal
+            className="relative overflow-hidden rounded-md bg-[oklch(0.14_0.036_164)] px-[clamp(1.25rem,3vw,3rem)] py-[clamp(1.75rem,3.5vw,3rem)] text-[oklch(0.95_0.014_92)]"
+          >
+            <Quotes
+              className="absolute right-4 top-4 size-12 text-[oklch(0.77_0.2_145_/_0.3)] sm:right-6 sm:top-6 sm:size-16"
+              weight="fill"
+              aria-hidden="true"
+            />
+            <p className="relative max-w-5xl text-balance font-display text-[clamp(1.5rem,3vw,2.85rem)] font-normal italic leading-[1.08] text-[oklch(0.92_0.11_145)]">
+              {featuredEpisode.quote}
+            </p>
+          </blockquote>
+        ) : null}
       </div>
     </section>
   )
