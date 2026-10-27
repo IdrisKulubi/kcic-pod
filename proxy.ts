@@ -22,7 +22,7 @@ export async function proxy(request: NextRequest) {
     pathname.startsWith('/icons') ||
     pathname.includes('.')
   ) {
-    return;
+    return NextResponse.next()
   }
 
   if (pathname.startsWith('/staff')) {

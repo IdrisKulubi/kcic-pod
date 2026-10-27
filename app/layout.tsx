@@ -2,7 +2,6 @@ import type { Metadata } from "next"
 import { Instrument_Serif, Manrope } from "next/font/google"
 
 import { JsonLd } from "@/components/json-ld"
-import { ThemeProvider } from "@/components/theme-provider"
 import {
   buildOrganizationJsonLd,
   buildPageMetadata,
@@ -73,7 +72,7 @@ export default function RootLayout({
             buildPodcastSeriesJsonLd(),
           ]}
         />
-        <ThemeProvider>{children}</ThemeProvider>
+        {children}
       </body>
     </html>
   )

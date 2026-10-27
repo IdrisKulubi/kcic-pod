@@ -17,7 +17,7 @@ export default function StaffRootLayout({
   return (
     <>
       {children}
-      <Toaster richColors position="top-center" />
+      <Toaster theme="dark" richColors position="top-center" />
     </>
   )
 }
